@@ -11,6 +11,8 @@ let data = {
   temperature: "",
   co2Ppm: "",
   co2Pwm: "",
+  threshold: "",
+  voltage: "",
 };
 
 app.get("/getMicroControllerDeviceState", (request, response) => {
@@ -18,13 +20,15 @@ app.get("/getMicroControllerDeviceState", (request, response) => {
 });
 
 app.post("/postMicroControllerDeviceState", (request, response) => {
-  const { humidity, temperature, co2Ppm, co2Pwm } = request.body;
-
+  const { humidity, temperature, co2Ppm, co2Pwm, threshold, voltage } = request.body;
+  console.log(request.body);
   data = {
     humidity,
-    temperature,
+    temperature,  
     co2Ppm,
     co2Pwm,
+    threshold,
+    voltage,
   };
 
   response.status(200).send("OK")
